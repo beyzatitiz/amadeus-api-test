@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "d2a759b6-322a-471b-b90c-9d4153de5b14",
+		"name": "AmadeusAPItest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22971378"
+	},
+	"item": [
+		{
+			"name": "Get Flights",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Each item in 'data' array has the expected properties\", function () {\r",
+							"    var responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.data).to.be.an(\"array\").that.is.not.empty;\r",
+							"\r",
+							"    // check each item\r",
+							"    for (var i = 0; i < responseBody.length; i++) {\r",
+							"        var item = responseBody[i];\r",
+							"        pm.expect(item).to.have.property(\"id\");\r",
+							"        pm.expect(item.Id).to.be.a(\"number\");\r",
+							"\r",
+							"        pm.expect(item).to.have.property(\"from\");\r",
+							"        pm.expect(item.From).to.be.a(\"string\");\r",
+							"\r",
+							"        pm.expect(item).to.have.property(\"to\");\r",
+							"        pm.expect(item.To).to.be.a(\"string\");\r",
+							"\r",
+							"        pm.expect(item).to.have.property(\"date\");\r",
+							"        pm.expect(item.Date).to.be.a(\"string\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.response.to.have.header('Content-Type', 'application/json');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://flights-api.buraky.workers.dev/",
+					"protocol": "https",
+					"host": [
+						"flights-api",
+						"buraky",
+						"workers",
+						"dev"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

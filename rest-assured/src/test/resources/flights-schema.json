@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Flights response",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "title": "Flight",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The unique identifier for a flight",
+            "type": "number"
+          },
+          "from": {
+            "description": "Flight departure location",
+            "type": "string"
+          },
+          "to": {
+            "description": "The destination of the flight",
+            "type": "string"
+          },
+          "date": {
+            "description": "The date of the flight",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
